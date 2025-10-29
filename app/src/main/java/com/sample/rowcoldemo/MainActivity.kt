@@ -25,12 +25,14 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            StringsDemoTheme()
-            Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+            StringDemoTheme {
+                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     MainScreen(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
+    }
+}
 
     @Composable
     fun TextCell(text: String, modifier: Modifier = Modifier) {
@@ -43,18 +45,38 @@ class MainActivity : ComponentActivity() {
             fontWeight = FontWeight.Bold,
             textAlign = TextAlign.Center)
     }
+
     @Composable
     fun MainScreen(modifier: Modifier = Modifier) {
         Column(modifier) {
-            TextCell("1")
-            TextCell("2")
-            TextCell("3")
+            Row {
+                Column {
+                    TextCell("1")
+                    TextCell("2")
+                    TextCell("3")
+                }
+                Column {
+                    TextCell("4")
+                    TextCell("5")
+                    TextCell("6")
+                }
+                Column {
+                    TextCell("7")
+                    TextCell("8")
+                }
+            }
+            Row {
+                TextCell("9")
+                TextCell("10")
+                TextCell("11")
+            }
         }
     }
 
-    @Preview(showBackground = true)
-    @Composable
-    fun StringsDemoTheme() {
-            MainScreen()
-        }
+@Preview(showBackground = true)
+@Composable
+fun MainScreenPreview() {
+    StringDemoTheme {
+        MainScreen()
     }
+}
