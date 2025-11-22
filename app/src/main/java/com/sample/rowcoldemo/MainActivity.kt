@@ -15,6 +15,7 @@ import androidx.compose.foundation.border
 import androidx.compose.material3.Text
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.FirstBaseline
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -50,11 +51,20 @@ class MainActivity : ComponentActivity() {
 
     @Composable
     fun MainScreen(modifier: Modifier = Modifier) {
-        Column(horizontalAlignment = Alignment.End,
-            modifier = modifier.width(250.dp)) {
-            TextCell("1")
-            TextCell("2")
-            TextCell("3")
+        Row {
+            Text(
+                text = "Large Text\n\nMore Text",
+                Modifier.alignBy(FirstBaseline),
+                fontSize = 40.sp,
+                fontWeight = FontWeight.Bold
+            )
+            Text(
+                text = "Small Text",
+                modifier = Modifier.paddingFrom(
+                    alignmentLine = FirstBaseline, before = 80.dp, after = 0.dp),
+                fontSize = 32.sp,
+                fontWeight = FontWeight.Bold
+            )
         }
     }
 
