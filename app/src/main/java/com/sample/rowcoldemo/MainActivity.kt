@@ -13,6 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.border
 import androidx.compose.material3.Text
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -49,7 +50,8 @@ class MainActivity : ComponentActivity() {
 
     @Composable
     fun MainScreen(modifier: Modifier = Modifier) {
-        Row (modifier.size(width = 400.dp, height = 200.dp)) {
+        Row (verticalAlignment = Alignment.CenterVertically,
+            modifier = modifier.size(width = 400.dp, height = 200.dp)) {
             TextCell("1")
             TextCell("2")
             TextCell("3")
